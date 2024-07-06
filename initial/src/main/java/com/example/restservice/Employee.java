@@ -1,4 +1,4 @@
-package main.java.com.example.restservice;
+package com.example.restservice;
 
 public class Employee {
     private String employee_id;
