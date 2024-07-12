@@ -1,14 +1,23 @@
 package com.example.restservice;
 
-import java.util.List;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class EmployeeManager {
-    public static void main(String[] args) {
-        Employees employees = new Employees();
+    private static Employees list = new Employees();
 
-        List<Employee> allEmployees = employees.getEmployeeList();
-        for (Employee employee : allEmployees) {
-            System.out.println(employee.getFirst_name() + " " + employee.getLast_name());
-        }
+    static {
+        list.getEmployeeList().add(new Employee("1", "John", "Doe", "john.doe@example.com", "Software Developer"));
+        list.getEmployeeList().add(new Employee("2", "Jane", "Doe", "jane.doe@example.com", "Project Manager"));
+        list.getEmployeeList()
+                .add(new Employee("3", "Josh", "Doe", "josh.doe@example.com", "Senior Software Engineer"));
+    }
+
+    public Employees getAllEmployees() {
+        return list;
+    }
+
+    public void addEmployee(Employee employee) {
+        list.getEmployeeList().add(employee);
     }
 }
